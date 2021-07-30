@@ -1,0 +1,52 @@
+ACTOR Fester : PlayerPawn
+{
+	Health 100
+
+	Speed 1
+	Radius 16
+	Height 64
+	Mass 100000
+	PainChance 255
+	PainSound "fester/hurt"
+
+	Player.ViewHeight 40
+	Player.JumpZ 6.0
+	Player.ForwardMove 0.75, 0.75
+	Player.SideMove 0.75, 0.75
+  
+	Player.SoundClass "Fester"
+	Player.ColorRange 197, 197
+	Player.DisplayName "Uncle Fester"
+	Player.StartItem "FesterGun"
+	Player.WeaponSlot 1, FesterGun
+	Player.WeaponSlot 2, FesterWhip
+	Player.WeaponSlot 3, NULL
+	Player.WeaponSlot 4, NULL
+	Player.WeaponSlot 5, NULL
+	Player.WeaponSlot 6, NULL
+	Player.WeaponSlot 7, NULL
+	Player.WeaponSlot 8, NULL
+	
+	States
+	{
+		Spawn:
+			PLAY A 1
+			Loop
+		See:
+			PLAY BBBBBBBAAAAAAACCCCCCCAAAAAAA 1
+			Loop
+		Melee:
+			PLAY EF 4
+			Goto Spawn
+		Pain:
+			PLAY G 0 A_Pain
+			PLAY G 0 ACS_ExecuteAlways(3,0)
+			Goto Spawn
+		Death:
+			PLAY A 1 A_Pain
+			PLAY Z 1 A_NoBlocking
+			PLAY AZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZAZA 1
+			PLAY Z -1
+			Stop
+	}
+}

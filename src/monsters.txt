@@ -1,0 +1,89 @@
+Actor FesterMonster
+{
+	Monster
+	Mass 1000000
+	Radius 16
+	Height 64
+	DeathSound "enemy/die"
+	States
+	{
+		Spawn:
+			TNT1 A -1
+			stop
+		Death:
+			MDIE A 0 A_Scream
+			MDIE A 3 A_NoBlocking
+			MDIE BCD 3
+			Stop
+	}
+}
+
+Actor AlienSpore : FesterMonster
+{
+	Speed 0
+	Health 8
+	PainChance 255
+	States
+	{
+		Spawn:
+			SPOR A 1 A_GiveInventory("Medikit",1)			
+			loop
+		Pain:
+			SPOR BCD 3
+			SPOR EFG 4
+			Goto Spawn
+	}
+}
+
+Actor Frog : FesterMonster
+{
+	Speed 5
+	+LookAllAround
+}
+
+Actor Frog1 : Frog // Blue
+{
+	Health 8
+	
+	States
+	{
+		Spawn:	
+			FRG1 A 1 A_Look
+			loop
+		See:
+			FRG1 AB 3
+			FRG1 CCCDDDDDDDDDDDDCCC 1 A_Chase
+			FRG1 B 0 A_FaceTarget
+			FRG1 BA 3 A_CustomMeleeAttack((50),"")
+			FRG1 A 6
+			loop
+	}
+}
+
+Actor Frog2 : Frog // Red
+{
+	Health 10
+	States
+	{
+		Spawn:	
+			FRG2 A 1 A_Look
+			loop
+		See:
+			FRG2 AB 3
+			FRG2 CCCDDDDDDDDDDDDCCC 1 A_Chase
+			FRG2 B 0 A_FaceTarget
+			FRG2 BA 3 A_CustomMeleeAttack((50),"")
+			FRG2 A 6
+			loop
+	}
+}
+
+Actor Frog3 : Frog // Green
+{
+	Health 48
+}
+
+Actor Frog4 : Frog // Purple
+{
+	Health 64
+}

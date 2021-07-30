@@ -1,0 +1,300 @@
+Actor FesterItem : Inventory
+{
+	Height 16
+	Radius 8
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.PickupSound "get/item"
+	States
+	{
+		Spawn:
+			TNT1 A -1
+			stop
+	}
+}
+
+Actor FesterCustomItem : CustomInventory
+{
+	Height 16
+	Radius 8
+	+INVENTORY.ALWAYSPICKUP
+	+INVENTORY.INVBAR
+	Inventory.PickupSound "get/item"
+	Inventory.UseSound "use/item"
+	States
+	{
+		Spawn:
+			TNT1 A -1
+			stop
+	}
+}
+
+Actor GunLevel : FesterItem
+{
+	Inventory.MaxAmount 7
+	States
+	{
+		Spawn:
+			GUNG A -1
+			stop
+	}
+}
+
+Actor WhipLevel : FesterItem
+{
+	Inventory.MaxAmount 3
+	States
+	{
+		Spawn:
+			WIPG A -1
+			stop
+	}
+}
+
+Actor WhipLevelPickup : CustomInventory
+{
+	Height 16
+	Radius 8
+	+INVENTORY.ALWAYSPICKUP
+	States
+	{
+		Spawn:
+			WIPG A -1
+			stop
+		Pickup:
+			WIPG A 0 A_JumpIfInventory("FesterWhip",1,2)
+			WIPG A 1
+			stop
+			WIPG A 0 A_GiveInventory("WhipLevel",1)
+			stop
+	}
+}
+
+Actor TakeGunLevel : CustomInventory
+{
+	Height 16
+	Radius 8
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.PickupSound "lose/item"
+	States
+	{
+		Spawn:
+			GUNT A -1
+			stop
+		Pickup:
+			GUNT A 0 A_TakeInventory("GunLevel",1)
+			Stop
+	}
+}
+
+Actor TakeWhipLevel : CustomInventory
+{
+	Height 16
+	Radius 8
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.PickupSound "lose/item"
+	States
+	{
+		Spawn:
+			WIPT A -1
+			stop
+		Pickup:
+			WIPT A 0 A_TakeInventory("WhipLevel",1)
+			Stop
+	}
+}
+
+Actor Bulb : FesterCustomItem
+{
+	Inventory.Icon ARTIBULB
+	Inventory.MaxAmount 99
+	Inventory.UseSound "NULL"
+	States
+	{
+		Spawn:
+			BULB A -1
+			stop
+		Use:
+			TNT1 A 1 ACS_ExecuteAlways(1,0)
+			stop
+	}
+}
+
+Actor UsedBulb : Inventory
+{
+	Inventory.MaxAmount 1
+}
+
+Actor ViceGrip : FesterCustomItem
+{
+	Inventory.Icon VICE
+	Inventory.MaxAmount 10
+	States
+	{
+		Spawn:
+			VICE A -1
+			stop
+		Use:
+			TNT1 A 1
+			stop
+	}
+}
+
+Actor Money : FesterItem
+{
+	Inventory.MaxAmount 99
+	States
+	{
+		Spawn:
+			MONY A -1
+			stop
+	}
+}
+
+Actor KeyItem : FesterItem
+{
+	Inventory.MaxAmount 99
+	States
+	{
+		Spawn:
+			FKEY A -1
+			stop
+	}
+}
+
+Actor Potion : FesterCustomItem
+{
+	Inventory.Icon POTION
+	Inventory.MaxAmount 5
+	States
+	{
+		Spawn:
+			POTN A -1
+			stop
+		Use:
+			TNT1 A 1
+			stop
+	}
+}
+
+Actor Missile : FesterCustomItem
+{
+	Inventory.Icon MISSILE
+	Inventory.MaxAmount 20
+	States
+	{
+		Spawn:
+			MISL A -1
+			stop
+		Use:
+			TNT1 A 1
+			stop
+	}
+}
+
+Actor Noose : FesterCustomItem
+{
+	Inventory.Icon NOOSE
+	Inventory.MaxAmount 15
+	States
+	{
+		Spawn:
+			NOOS A -1
+			stop
+		Use:
+			TNT1 A 1
+			stop
+	}
+}
+
+Actor InvisiblePotion : FesterCustomItem
+{
+	Inventory.Icon POTIONIN
+	Inventory.MaxAmount 5
+	States
+	{
+		Spawn:
+			INPO A -1
+			stop
+		Use:
+			TNT1 A 1
+			stop
+	}
+}
+
+Actor TNT : FesterCustomItem
+{
+	Inventory.Icon FESTRTNT
+	Inventory.MaxAmount 30
+	States
+	{
+		Spawn:
+			FTNT A -1
+			stop
+		Use:
+			TNT1 A 1
+			stop
+	}
+}
+
+Actor Clue : Inventory
+{
+	Height 16
+	Radius 8
+	Inventory.MaxAmount 1
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.PickupSound "get/item"
+	States
+	{
+		Spawn:
+			TNT1 A -1
+			stop
+	}
+}
+
+Actor Clue1 : Clue
+{
+}
+
+Actor Clue2 : Clue
+{
+}
+
+Actor Clue3 : Clue
+{
+}
+
+Actor Clue4 : Clue
+{
+}
+
+Actor Clue5 : Clue
+{
+}
+
+Actor HealthUp : CustomInventory
+{
+	Inventory.PickupMessage "Health Increased!"
+	Inventory.PickupSound "get/item"
+	Radius 8
+	Height 16
+	States
+	{
+		Spawn:
+			TNT1 A -1
+			loop
+		Pickup:
+			TNT1 A 0 A_GiveInventory("HealthBar", 1)
+			TNT1 A 0 A_GiveInventory("HealthIncrease", 50)
+			stop
+	}
+}
+
+Actor HealthBar : Inventory
+{
+	Inventory.MaxAmount 2
+}
+
+Actor HealthIncrease : UpgradeStamina
+{
+	Inventory.MaxAmount 100
+}

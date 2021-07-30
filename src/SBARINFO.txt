@@ -1,0 +1,273 @@
+height 1;
+monospacefonts true, "0";
+interpolatehealth true, 6;
+
+statusbar fullscreen, fullscreenoffsets
+{
+	DrawImage "healthl", 8, 8;
+	DrawImage "hbarb1l", 46, 8;
+	drawbar "hbar1l", "hbar1l_2", health, horizontal, 50, 12;
+
+	InInventory HealthBar, 1
+	{
+		DrawImage "hbarb2l", 46, 8;
+		drawbar "hbar2l", "hbar2l_2", health, horizontal, 50, 12;
+	}
+	InInventory HealthBar, 2
+	{
+		DrawImage "hbarb3l", 46, 8;
+		drawbar "hbar3l", "hbar3l_2", health, horizontal, 50, 12;
+	}
+
+	DrawImage "weaponl", -232, 8;
+	
+	IsSelected FesterGun
+	{
+		drawimage "selectl", -208, 40;
+	}
+	IsSelected FesterWhip
+	{
+		drawimage "selectl", -208, 86;
+	}
+	
+	InInventory GunLevel, 1
+	{
+		drawimage "levell", -88, 40;
+	}
+	InInventory GunLevel, 2
+	{
+		drawimage "levell", -72, 40;
+	}
+	InInventory GunLevel, 3
+	{
+		drawimage "levell", -56, 40;
+	}
+	InInventory GunLevel, 4
+	{
+		drawimage "levell", -104, 56;
+	}
+	InInventory GunLevel, 5
+	{
+		drawimage "levell", -88, 56;
+	}
+	InInventory GunLevel, 6
+	{
+		drawimage "levell", -72, 56;
+	}
+	InInventory GunLevel, 7
+	{
+		drawimage "levell", -56, 56;
+	}
+
+	InInventory FesterWhip, 1
+	{
+		drawimage "levell", -104, 88;
+	}
+	InInventory WhipLevel, 1
+	{
+		drawimage "levell", -88, 88;
+	}
+	InInventory WhipLevel, 2
+	{
+		drawimage "levell", -72, 88;
+	}
+	InInventory WhipLevel, 3
+	{
+		drawimage "levell", -56, 88;
+	}
+
+	drawselectedinventory FESTERNUMS, 8, -114, 52, -105, untranslated;
+	
+	drawimage "moneyl", 8, -88;
+	drawnumber 2, FESTERNUML, untranslated, Money, fillzeros, alignment(left), 52, -70;
+
+	drawimage "keyl", 8, -44;
+	drawnumber 2, FESTERNUML, untranslated, KeyItem, fillzeros, alignment(left), 52, -26;
+}
+
+statusbar InventoryFullscreen
+{
+	drawinventorybar Hexen, noartibox, 6, INDEXFONT_RAVEN, 83, 166, 111, 188, untranslated, 1;
+}
+
+statusbar Normal, fullscreenoffsets
+{
+	DrawImage "health", 8, 8;
+	DrawImage "hbarb1", 27, 8;
+	drawbar "hbar1", "hbar1_2", health, horizontal, 29, 10;
+
+	InInventory HealthBar, 1
+	{
+		DrawImage "hbarb2", 27, 8;
+		drawbar "hbar2", "hbar2_2", health, horizontal, 29, 10;
+	}
+	InInventory HealthBar, 2
+	{
+		DrawImage "hbarb3", 27, 8;
+		drawbar "hbar3", "hbar3_2", health, horizontal, 29, 10;
+	}
+
+	DrawImage "weapon", -120, 8;
+
+	IsSelected FesterGun
+	{
+		drawimage "select", -108, 24;
+	}
+	IsSelected FesterWhip
+	{
+		drawimage "select", -108, 48;
+	}
+
+	InInventory GunLevel, 1
+	{
+		drawimage "level", -48, 24;
+	}
+	InInventory GunLevel, 2
+	{
+		drawimage "level", -40, 24;
+	}
+	InInventory GunLevel, 3
+	{
+		drawimage "level", -32, 24;
+	}
+	InInventory GunLevel, 4
+	{
+		drawimage "level", -56, 32;
+	}
+	InInventory GunLevel, 5
+	{
+		drawimage "level", -48, 32;
+	}
+	InInventory GunLevel, 6
+	{
+		drawimage "level", -40, 32;
+	}
+	InInventory GunLevel, 7
+	{
+		drawimage "level", -32, 32;
+	}
+
+	InInventory FesterWhip, 1
+	{
+		drawimage "level", -56, 48;
+	}
+	InInventory WhipLevel, 1
+	{
+		drawimage "level", -48, 48;
+	}
+	InInventory WhipLevel, 2
+	{
+		drawimage "level", -40, 48;
+	}
+	InInventory WhipLevel, 3
+	{
+		drawimage "level", -32, 48;
+	}
+
+	drawselectedinventory FESTERNUMS, 2, -83, 52, -73, untranslated;
+
+	drawimage "money", 8, -52;
+	drawnumber 2, FESTERNUMS, untranslated, Money, fillzeros, alignment(left), 34, -45;
+
+	drawimage "key", 8, -26;
+	drawnumber 2, FESTERNUMS, untranslated, KeyItem, fillzeros, alignment(left), 34, -17;
+}
+
+statusbar inventory
+{
+	drawinventorybar Hexen, noartibox, 6, INDEXFONT_RAVEN, 98, 167;
+}
+
+statusbar Automap
+{
+	drawimage "automap", -100, 0;
+
+	DrawImage "hbarb1_2", 73, 4;
+	drawbar "hbar1", "hbar1_2", health, horizontal, 75, 6;
+
+	IsSelected FesterGun
+	{
+		drawimage "select", 180, 20;
+	}
+	IsSelected FesterWhip
+	{
+		drawimage "select", 180, 44;
+	}
+
+	InInventory GunLevel, 1
+	{
+		drawimage "level", 240, 20;
+	}
+	InInventory GunLevel, 2
+	{
+		drawimage "level", 248, 20;
+	}
+	InInventory GunLevel, 3
+	{
+		drawimage "level", 256, 20;
+	}
+	InInventory GunLevel, 4
+	{
+		drawimage "level", 232, 28;
+	}
+	InInventory GunLevel, 5
+	{
+		drawimage "level", 240, 28;
+	}
+	InInventory GunLevel, 6
+	{
+		drawimage "level", 248, 28;
+	}
+	InInventory GunLevel, 7
+	{
+		drawimage "level", 256, 28;
+	}
+
+	InInventory FesterWhip, 1
+	{
+		drawimage "level", 232, 44;
+	}
+	InInventory WhipLevel, 1
+	{
+		drawimage "level", 240, 44;
+	}
+	InInventory WhipLevel, 2
+	{
+		drawimage "level", 248, 44;
+	}
+	InInventory WhipLevel, 3
+	{
+		drawimage "level", 256, 44;
+	}
+
+	InInventory Clue1, 1
+	{
+		drawimage "clue1", 56, 20;
+	}
+	InInventory Clue2, 1
+	{
+		drawimage "clue2", 80, 20;
+	}
+	InInventory Clue3, 1
+	{
+		drawimage "clue3", 112, 20;
+	}
+	InInventory Clue4, 1
+	{
+		drawimage "clue4", 80, 45;
+	}
+	InInventory Clue5, 1
+	{
+		drawimage "clue5", 96, 45;
+	}
+
+	drawnumber 2, FESTERNUM, untranslated, Bulb, fillzeros, alignment(left), 104, 116;
+	drawnumber 2, FESTERNUM, untranslated, ViceGrip, fillzeros, alignment(left), 176, 116;
+	drawnumber 2, FESTERNUM, untranslated, Money, fillzeros, alignment(left), 248, 116;
+	drawnumber 2, FESTERNUM, untranslated, KeyItem, fillzeros, alignment(left), 104, 140;
+	drawnumber 2, FESTERNUM, untranslated, Potion, fillzeros, alignment(left), 176, 140;
+	drawnumber 2, FESTERNUM, untranslated, Missile, fillzeros, alignment(left), 248, 140;
+	drawnumber 2, FESTERNUM, untranslated, Noose, fillzeros, alignment(left), 104, 164;
+	drawnumber 2, FESTERNUM, untranslated, InvisiblePotion, fillzeros, alignment(left), 176, 164;
+	drawnumber 2, FESTERNUM, untranslated, TNT, fillzeros, alignment(left), 248, 164;
+}

@@ -1,0 +1,208 @@
+Actor FesterGun : Weapon
+{
+	Radius 16
+	Weapon.AmmoUse 0
+	States
+	{
+		Ready:
+			FGUN A 1 A_WeaponReady
+			Loop
+		Deselect:
+			FGUN AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Lower
+			FGUN A 1 A_Lower
+			Loop
+		Select:
+			FGUN AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Raise
+			FGUN A 1 A_Raise
+			Loop
+		Fire:
+			FGUN A 0 A_JumpIfInventory("GunLevel",7,"Fire8")
+			FGUN A 0 A_JumpIfInventory("GunLevel",6,"Fire7")
+			FGUN A 0 A_JumpIfInventory("GunLevel",5,"Fire6")
+			FGUN A 0 A_JumpIfInventory("GunLevel",4,"Fire5")
+			FGUN A 0 A_JumpIfInventory("GunLevel",3,"Fire4")
+			FGUN A 0 A_JumpIfInventory("GunLevel",2,"Fire3")
+			FGUN A 0 A_JumpIfInventory("GunLevel",1,"Fire2")
+			FGUN A 2 A_FireCustomMissile("FesterShot1")
+			FGUN A 6
+			Goto Ready
+		Fire2:
+			FGUN A 2 A_FireCustomMissile("FesterShot2")
+			FGUN A 6
+			Goto Ready
+		Fire3:
+			FGUN A 1 A_FireCustomMissile("FesterShot3")
+			FGUN A 6
+			Goto Ready
+		Fire4:
+			FGUN A 1 A_FireCustomMissile("FesterShot4")
+			FGUN A 6
+			Goto Ready
+		Fire5:
+			FGUN A 0 A_FireCustomMissile("FesterShot5")
+			FGUN A 6
+			Goto Ready
+		Fire6:
+			FGUN A 0 A_FireCustomMissile("FesterShot6")
+			FGUN A 6
+			Goto Ready
+		Fire7:
+			FGUN A 0 A_FireCustomMissile("FesterShot7")
+			FGUN A 0 A_FireCustomMissile("FesterShot7_2")
+			FGUN A 5
+			Goto Ready
+		Fire8:
+			FGUN A 0 A_FireCustomMissile("FesterShot8",0,0,-24)
+			FGUN A 0 A_FireCustomMissile("FesterShot8")
+			FGUN A 0 A_FireCustomMissile("FesterShot8",0,0,24)
+			FGUN A 5
+			Goto Ready
+	}
+}
+
+Actor FesterShot1
+{
+	Projectile
+	Height 16
+	Radius 8
+	Speed 16
+	Damage (1)
+	SeeSound "gun/shot1"
+	BounceSound "gun/hit"
+		
+	States
+	{
+		Spawn:
+			GUN1 A 17
+			Goto Death
+		Death:
+			GUN1 A 1
+			Stop
+	}
+}
+
+Actor FesterShot2 : FesterShot1
+{
+	Speed 25
+	States
+	{
+		Spawn:
+			GUN1 A 35
+			Goto Death
+	}
+}
+
+Actor FesterShot3
+{
+	Projectile
+	Height 16
+	Radius 8
+	Speed 16
+	Damage (2)
+	SeeSound "gun/shot2"
+	BounceSound "gun/hit"
+	States
+	{
+		Spawn:
+			GUN1 BBBBBBBBBBBBBBBBBBBB 1 A_Weave(8,0,3.0,0.0)
+			Goto Death
+		Death:
+			GUN1 B 1
+			Stop
+	}
+}
+
+Actor FesterShot4 : FesterShot3
+{
+	Speed 25
+	States
+	{
+		Spawn:
+			GUN1 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 1 A_Weave(10,0,6.0,0.0)
+			Goto Death
+	}
+}
+
+
+Actor FesterShot5
+{
+	Projectile
+	Height 16
+	Radius 8
+	Speed 25
+	Damage (3)
+	SeeSound "gun/shot3"
+	BounceSound "gun/hit"
+	States
+	{
+		Spawn:
+			GUN1 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC 1 A_Weave(8,8,3.0,1.4)
+			Goto Death
+	}
+}
+
+Actor FesterShot6 : FesterShot5
+{
+	Speed 30
+	States
+	{
+		Spawn:
+			GUN1 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC 1 A_Weave(10,10,6.0,2.0)
+			Goto Death
+	}
+}
+
+
+Actor FesterShot7
+{
+	Projectile
+	Height 16
+	Radius 8
+	Speed 16
+	Damage (4)
+	SeeSound "gun/shot4"
+	BounceSound "gun/hit"
+	States
+	{
+		Spawn:
+			GUN1 DZ 1 A_Weave(6,0,4.0,0.0)
+			loop
+	}
+}
+
+Actor FesterShot7_2 : FesterShot7
+{
+	States
+	{
+		Spawn:
+			GUN1 DZ 1 A_Weave(6,0,-4.0,0.0)
+			loop
+	}
+}
+
+Actor FesterShot8 : FesterShot7
+{
+	Speed 40
+	States
+	{
+		Spawn:
+			GUN1 DZ 1
+			loop
+	}
+}
+
+
+Actor FesterWhip : Fist
+{
+	States
+	{
+		Fire:
+			PUNG B 4
+			PUNG C 0 A_Punch
+			PUNG C 4 A_GunFlash
+			PUNG D 5
+			PUNG C 4
+			PUNG B 5 A_ReFire
+			Goto Ready
+	}
+}

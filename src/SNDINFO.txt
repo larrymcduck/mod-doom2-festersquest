@@ -1,0 +1,51 @@
+get/item		festget
+use/item		festitem
+use/key			festkey
+lose/item		festlose
+
+fester/hurt		festhurt
+gun/shot1		shot1
+gun/shot2		shot2
+gun/shot3		shot3
+gun/shot4		shot4
+gun/hit			shothit
+
+enemy/hurt		e_hurt
+enemy/die		e_die
+
+menu/cursor		cursor
+menu/activate	cursor
+menu/backup		cursor
+menu/prompt		cursor
+menu/change		cursor
+menu/invalid	cursor
+menu/dismiss	cursor
+menu/choose		cursor
+menu/clear		cursor
+menu/quit1		cursor
+menu/quit2		cursor
+
+$playersound	fester	male	*death		festhurt
+$playersound	fester	male	*xdeath		festhurt
+$playersound	fester	male	*gibbed		festhurt
+$playersound	fester	male	*pain100	festhurt
+$playersounddup	fester	male	*pain75		*pain100
+$playersounddup	fester	male	*pain50		*pain100
+$playersounddup	fester	male	*pain25		*pain100
+$playersound	fester	male	*grunt		null
+$playersounddup	fester	male	*land		*grunt
+$playersound	fester	male	*jump		null
+$playersound	fester	male	*fist		null
+$playersound	fester	male	*usefail	null
+
+$limit get/item 0
+$limit use/item 0
+$limit lose/item 0
+$limit player/hurt 0
+$limit gun/shot1 0
+$limit gun/shot2 0
+$limit gun/shot3 0
+$limit gun/shot4 0
+$limit gun/hit 0
+$limit use/key 0
+$limit menu/cursor 0

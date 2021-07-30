@@ -1,0 +1,34 @@
+Actor FesterDecor
+{
+	+Solid
+	Radius 32
+	Height 64
+}
+
+Actor FesterDecorSolid : FesterDecor
+{
+	+Solid
+}
+
+Actor Bush : FesterDecorSolid 10000
+{
+	States
+	{
+		Spawn:
+			BUSH A -1
+			stop
+	}
+}
+
+Actor CeilingLight : FesterDecor 10001
+{
+	Height 1
+	+SPAWNCEILING
+	+NoGravity
+	States
+	{
+		Spawn:
+			CLTE A -1
+			stop
+	}
+}
